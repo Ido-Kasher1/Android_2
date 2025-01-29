@@ -1,10 +1,10 @@
 package com.example.android_2
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.BaseAdapter
 import android.widget.CheckBox
 import android.widget.ListView
@@ -24,8 +24,6 @@ class StudentsListActivity : AppCompatActivity() {
         listView = findViewById(R.id.listView)
 
         students = Model.shared.students
-
-//        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, students)
 
         listView?.adapter = StudentsAdapter()
     }
@@ -54,6 +52,15 @@ class StudentsListActivity : AppCompatActivity() {
             nameTextView.text = student?.name
             idTextView.text = student?.id
             checkbox.isChecked = student?.isChecked ?: false
+            checkbox.isEnabled = false
+
+            view.setOnClickListener {
+                val intent = Intent(parent?.context, StudentDetailsActivity::class.java).apply {
+                    putExtra("studentPosition", position)
+                }
+
+                parent?.context?.startActivity(intent)
+            }
 
             return view
         }
