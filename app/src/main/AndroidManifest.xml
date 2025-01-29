@@ -16,13 +16,7 @@
             android:name=".StudentDetailesActivity"
             android:exported="false" />
         <activity
-            android:name=".NewStudentActivity"
-            android:exported="false" />
-        <activity
-            android:name=".StudentsListActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".NewStudentFragment"
             android:exported="true"
             android:theme="@style/Theme.Android_2">
             <intent-filter>
@@ -30,6 +24,15 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".StudentsListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Android_2">
+
         </activity>
     </application>
 
