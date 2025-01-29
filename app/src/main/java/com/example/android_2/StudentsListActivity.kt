@@ -10,9 +10,12 @@ import android.widget.CheckBox
 import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.android_2.model.Model
+import com.example.android_2.model.Student
 
 class StudentsListActivity : AppCompatActivity() {
     var listView: ListView? = null
+    var students: MutableList<Student>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,15 +23,15 @@ class StudentsListActivity : AppCompatActivity() {
 
         listView = findViewById(R.id.listView)
 
-        val students = arrayOf("Alice", "Bob", "Charlie", "David", "Emma")
+        students = Model.shared.students
 
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, students)
+//        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, students)
 
         listView?.adapter = StudentsAdapter()
     }
 
-    class StudentsAdapter(): BaseAdapter() {
-        override fun getCount(): Int = 10
+    inner class StudentsAdapter(): BaseAdapter() {
+        override fun getCount(): Int = students?.size ?: 0
 
         override fun getItem(position: Int): Any {
             TODO("Not yet implemented")
@@ -42,12 +45,15 @@ class StudentsListActivity : AppCompatActivity() {
             val inflater = LayoutInflater.from(parent?.context)
             val view = convertView ?: inflater.inflate(R.layout.student_list_row, parent, false)
 
+            val student = students?.get(position)
+
             val nameTextView: TextView = view.findViewById(R.id.student_row_name_text)
             val idTextView: TextView = view.findViewById(R.id.student_row_id_text)
             val checkbox: CheckBox = view.findViewById(R.id.student_row_checkbox)
 
-            nameTextView.text = "Michael Berzeboosky"
-            idTextView.text = "1234"
+            nameTextView.text = student?.name
+            idTextView.text = student?.id
+            checkbox.isChecked = student?.isChecked ?: false
 
             return view
         }
