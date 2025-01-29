@@ -32,11 +32,14 @@ class NewStudentActivity : Activity() {
         // Get input fields from the layout
         val idTextView: EditText = findViewById(R.id.idTextView)
         val nameTextView: EditText = findViewById(R.id.nameTextView)
+        val phoneTextView: EditText = findViewById(R.id.phoneTextView)
+        val addressTextView: EditText = findViewById(R.id.addressTextView)
 
         val student = Student(
             id = idTextView.text.toString(),
             name = nameTextView.text.toString(),
-            avatarUrl = "",
+            address = addressTextView.text.toString(),
+            phone = phoneTextView.text.toString(),
             isChecked = false
         )
 
