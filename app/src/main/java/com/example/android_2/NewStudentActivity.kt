@@ -6,13 +6,8 @@ import android.view.Menu
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.ProgressBar
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
-import com.example.android_2.Model.Student
+import com.example.android_2.model.Student
 
 class NewStudentActivity : Activity() {
 
