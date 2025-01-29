@@ -16,7 +16,7 @@
             android:name=".StudentDetailesActivity"
             android:exported="false" />
         <activity
-            android:name=".NewStudentFragment"
+            android:name=".NewStudentActivity"
             android:exported="true"
             android:theme="@style/Theme.Android_2">
             <intent-filter>
