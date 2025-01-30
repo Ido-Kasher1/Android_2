@@ -9,7 +9,7 @@ class Model private constructor() {
 
     init {
         students.add(Student("Liraz", "123", "Holon", "052-111", false))
-        students.add(Student("Ido", "124", "LoYodea", "052-1231", true))
+        students.add(Student("Ido", "124", "Ramat Hasharon", "052-1231", true))
         students.add(Student("asdfasdf", "274357", "dfsghdfgh", "052-1114", false))
         students.add(Student("iuosdfngios", "78345", "hghhjrt", "052-11856", false))
         students.add(Student("zhesd", "845", "abc", "052-85966", true))

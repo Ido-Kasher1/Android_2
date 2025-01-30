@@ -1,20 +1,59 @@
 package com.example.android_2
 
+import android.app.Activity
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import android.view.Menu
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ProgressBar
+import com.example.android_2.model.Student
 
-class NewStudentActivity : AppCompatActivity() {
+class NewStudentActivity : Activity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_new_student)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        setContentView(R.layout.activity_new_student) // Ensure this is the correct layout file
+
+        // Optionally initialize your views
+        val saveButton: Button = findViewById(R.id.saveButton)
+        val cancelButton: Button = findViewById(R.id.cancelButton)
+
+        saveButton.setOnClickListener { view ->
+            onSaveClicked(view)
         }
+
+        cancelButton.setOnClickListener { view ->
+            onCancelClick(view)
+        }
+    }
+
+    private fun onSaveClicked(view: View) {
+        // Get input fields from the layout
+        val idTextView: EditText = findViewById(R.id.idTextView)
+        val nameTextView: EditText = findViewById(R.id.nameTextView)
+        val phoneTextView: EditText = findViewById(R.id.phoneTextView)
+        val addressTextView: EditText = findViewById(R.id.addressTextView)
+
+        val student = Student(
+            id = idTextView.text.toString(),
+            name = nameTextView.text.toString(),
+            address = addressTextView.text.toString(),
+            phone = phoneTextView.text.toString(),
+            isChecked = false
+        )
+
+        // Assume progressBar is a part of the layout and can be made visible during save
+        val progressBar: ProgressBar = findViewById(R.id.progressBar)
+        progressBar.visibility = View.VISIBLE
+    }
+
+    private fun onCancelClick(view: View) {
+        finish() // Close activity without saving
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menu.clear()
+        return super.onCreateOptionsMenu(menu)
     }
 }
