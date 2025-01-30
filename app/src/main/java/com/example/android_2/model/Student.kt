@@ -1,9 +1,9 @@
 package com.example.android_2.model
 
 data class Student(
-    val name: String,
+    var name: String,
     val id: String,
-    val address: String,
-    val phone: String,
-    val isChecked: Boolean
+    var address: String,
+    var phone: String,
+    var isChecked: Boolean
 )
