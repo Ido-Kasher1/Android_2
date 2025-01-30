@@ -31,12 +31,13 @@ class StudentsListActivity : AppCompatActivity() {
     inner class StudentsAdapter(): BaseAdapter() {
         override fun getCount(): Int = students?.size ?: 0
 
+        // getItem() and getItemId() return default values
         override fun getItem(position: Int): Any {
-            TODO("Not yet implemented")
+            return 1;
         }
 
         override fun getItemId(position: Int): Long {
-            TODO("Not yet implemented")
+            return 1;
         }
 
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
